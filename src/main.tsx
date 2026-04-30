@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
+import App from './App'
 import './index.css'
 import { ConfigProvider } from 'antd'
 
@@ -9,8 +9,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <ConfigProvider
       theme={{
         token: {
-          colorPrimary: '#4b6343',
-          borderRadius: 12,
+          colorPrimary: '#1D2B11',
+          borderRadius: 16,
+          fontFamily: 'Inter, sans-serif',
         },
       }}
     >
