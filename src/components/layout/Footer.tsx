@@ -1,73 +1,98 @@
 import React from "react";
-import { InstagramOutlined, TwitterOutlined, MailOutlined } from "@ant-design/icons";
+import { Instagram, Twitter, Mail } from "lucide-react";
 
 const Footer = () => {
+  const links = {
+    product: [
+      { label: "How it works", href: "#how-it-works" },
+      { label: "Features", href: "#features" },
+      { label: "Pricing", href: "#pricing" },
+    ],
+    company: [
+      { label: "About Us", href: "#" },
+      { label: "Blog", href: "#" },
+      { label: "Contact", href: "#" },
+    ],
+    legal: [
+      { label: "Privacy Policy", href: "#" },
+      { label: "Terms of Service", href: "#" },
+    ],
+  };
+
   return (
-    <footer className="bg-secondary/30 border-t border-primary/5 pt-24 pb-12">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-24">
-          <div className="col-span-1 md:col-span-1">
-            <a href="/" className="flex items-center gap-3 mb-8">
-              <div className="w-10 h-10 bg-accent rounded-xl flex items-center justify-center overflow-hidden shadow-lg shadow-accent/20">
-                <img src="/images/mascot.png" alt="Olive Logo" className="w-8 h-8 object-contain" />
+    <footer className="bg-gray-50 border-t border-gray-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+          {/* Brand */}
+          <div>
+            <a href="/" className="flex items-center gap-2 mb-6">
+              <div className="w-9 h-9 bg-accent rounded-lg flex items-center justify-center">
+                <img src="/images/mascot.png" alt="Olive Logo" className="w-6 h-6 object-contain" />
               </div>
-              <span className="text-2xl font-black text-primary tracking-tight font-display">Olive</span>
+              <span className="text-xl font-bold text-primary">Olive</span>
             </a>
-            <p className="text-muted leading-relaxed mb-8 font-medium">
-              Empowering families to make healthier, safer food choices every day through transparency and expert-backed data.
+            <p className="text-gray-700 text-sm mb-6 leading-relaxed">
+              Empowering families to make healthier food choices with expert-backed insights.
             </p>
-            <div className="flex items-center gap-4">
-              <a href="#" className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all shadow-sm border border-primary/5">
-                <InstagramOutlined style={{ fontSize: '20px' }} />
+            <div className="flex gap-3">
+              <a href="#" className="w-10 h-10 bg-white border border-gray-200 rounded-lg flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+                <Instagram className="w-5 h-5" />
               </a>
-              <a href="#" className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all shadow-sm border border-primary/5">
-                <TwitterOutlined style={{ fontSize: '20px' }} />
+              <a href="#" className="w-10 h-10 bg-white border border-gray-200 rounded-lg flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+                <Twitter className="w-5 h-5" />
               </a>
-              <a href="#" className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all shadow-sm border border-primary/5">
-                <MailOutlined style={{ fontSize: '20px' }} />
+              <a href="#" className="w-10 h-10 bg-white border border-gray-200 rounded-lg flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+                <Mail className="w-5 h-5" />
               </a>
             </div>
           </div>
 
-          <div className="col-span-1">
-            <h4 className="font-black text-xs mb-8 uppercase tracking-[0.2em] text-primary/40">Product</h4>
-            <ul className="space-y-4">
-              <li><a href="#how-it-works" className="text-primary/70 hover:text-primary transition-colors font-semibold">How it works</a></li>
-              <li><a href="#features" className="text-primary/70 hover:text-primary transition-colors font-semibold">Features</a></li>
-              <li><a href="#pricing" className="text-primary/70 hover:text-primary transition-colors font-semibold">Pricing</a></li>
-              <li><a href="#" className="text-primary/70 hover:text-primary transition-colors font-semibold">Restaurants</a></li>
+          {/* Product */}
+          <div>
+            <h4 className="font-bold text-sm text-gray-900 mb-6 uppercase tracking-wide">Product</h4>
+            <ul className="space-y-3">
+              {links.product.map((link) => (
+                <li key={link.label}>
+                  <a href={link.href} className="text-gray-700 hover:text-primary transition-colors text-sm font-medium">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
-          <div className="col-span-1">
-            <h4 className="font-black text-xs mb-8 uppercase tracking-[0.2em] text-primary/40">Company</h4>
-            <ul className="space-y-4">
-              <li><a href="#" className="text-primary/70 hover:text-primary transition-colors font-semibold">About Us</a></li>
-              <li><a href="#" className="text-primary/70 hover:text-primary transition-colors font-semibold">Blog</a></li>
-              <li><a href="#" className="text-primary/70 hover:text-primary transition-colors font-semibold">Support</a></li>
-              <li><a href="#" className="text-primary/70 hover:text-primary transition-colors font-semibold">Contact</a></li>
+          {/* Company */}
+          <div>
+            <h4 className="font-bold text-sm text-gray-900 mb-6 uppercase tracking-wide">Company</h4>
+            <ul className="space-y-3">
+              {links.company.map((link) => (
+                <li key={link.label}>
+                  <a href={link.href} className="text-gray-700 hover:text-primary transition-colors text-sm font-medium">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
-          <div className="col-span-1">
-            <h4 className="font-black text-xs mb-8 uppercase tracking-[0.2em] text-primary/40">Legal</h4>
-            <ul className="space-y-4">
-              <li><a href="#" className="text-primary/70 hover:text-primary transition-colors font-semibold">Privacy Policy</a></li>
-              <li><a href="#" className="text-primary/70 hover:text-primary transition-colors font-semibold">Terms of Service</a></li>
-              <li><a href="#" className="text-primary/70 hover:text-primary transition-colors font-semibold">Refund Policy</a></li>
+          {/* Legal */}
+          <div>
+            <h4 className="font-bold text-sm text-gray-900 mb-6 uppercase tracking-wide">Legal</h4>
+            <ul className="space-y-3">
+              {links.legal.map((link) => (
+                <li key={link.label}>
+                  <a href={link.href} className="text-gray-700 hover:text-primary transition-colors text-sm font-medium">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
 
-        <div className="pt-12 border-t border-primary/5 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-primary/30 text-xs font-bold uppercase tracking-widest">
-            © 2026 Olive Inc. All rights reserved.
-          </p>
-          <div className="flex items-center gap-8">
-            <a href="#" className="text-primary/30 text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors">Terms</a>
-            <a href="#" className="text-primary/30 text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors">Privacy</a>
-            <a href="#" className="text-primary/30 text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors">Cookies</a>
-          </div>
+        {/* Bottom */}
+        <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-gray-600 text-sm">© 2026 Olive Inc. All rights reserved.</p>
         </div>
       </div>
     </footer>

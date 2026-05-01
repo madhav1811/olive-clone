@@ -1,92 +1,120 @@
-import React from "react";
-import { Button, Collapse } from "antd";
-import { ShieldCheck, Plus } from "lucide-react";
+import React, { useState } from "react";
+import { Plus } from "lucide-react";
 import { motion } from "framer-motion";
 
 const faqs = [
   {
-    key: '1',
-    label: 'How does Olive scan ingredients?',
-    children: <p>Olive uses advanced OCR (Optical Recognition) technology to read food labels instantly. We then cross-reference these ingredients with our proprietary database.</p>,
+    question: "How does Olive scan ingredients?",
+    answer: "Olive uses advanced OCR technology to read food labels instantly, cross-referencing them with our proprietary database of ingredients.",
   },
   {
-    key: '2',
-    label: 'Is Olive safe for kids?',
-    children: <p>Absolutely. Olive is designed specifically with families in mind. Our database highlights ingredients that are particularly concerning for child development.</p>,
+    question: "Is Olive safe for kids?",
+    answer: "Absolutely. Olive is designed for families, highlighting ingredients concerning for child development.",
   },
   {
-    key: '3',
-    label: 'Does Olive work without an internet connection?',
-    children: <p>Olive requires a data connection to access our live, updated database ensuring you have the most current information.</p>,
+    question: "Does Olive work offline?",
+    answer: "Olive requires an internet connection to access our live, updated database for the most current information.",
   },
   {
-    key: '4',
-    label: 'How often is the database updated?',
-    children: <p>Our database is updated daily by our team of nutritionists and researchers.</p>,
+    question: "How often is the database updated?",
+    answer: "Our database is updated daily by our team of nutritionists and researchers.",
   },
 ];
 
 const PromoAndFAQ = () => {
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
+
   return (
-    <div id="faq" className="bg-secondary/10">
+    <div id="faq" className="bg-gray-50">
       {/* Promo Block */}
-      <section className="section-padding container mx-auto px-4 md:px-6">
+      <section className="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-white rounded-[3rem] p-8 md:p-16 shadow-2xl border border-primary/5 flex flex-col md:flex-row items-center gap-12 overflow-hidden relative"
+          className="bg-white rounded-2xl p-8 md:p-16 shadow-lg border border-gray-200 flex flex-col md:flex-row items-center gap-12"
         >
-          <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-          
-          <div className="flex-1 text-center md:text-left">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              Protect Your Family From <span className="text-primary">Hidden Toxins</span>
+          <div className="flex-1">
+            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">
+              Protect Your Family From <span className="text-accent">Hidden Toxins</span>
             </h2>
-            <p className="text-xl text-foreground/60 mb-8">
-              Sign up for Olive today and start shopping with confidence.
+            <p className="text-xl text-gray-700 mb-8">
+              Download Olive today and start shopping with confidence.
             </p>
-            <Button
-              type="primary"
-              size="large"
-              className="bg-primary hover:bg-primary/90 border-none rounded-full px-12 font-bold h-16 text-lg text-white"
+            <a
+              href="#download"
+              className="inline-block px-8 py-4 bg-primary text-white rounded-lg font-semibold hover:bg-primary/90 transition-colors"
             >
               Download for iOS
-            </Button>
+            </a>
           </div>
 
-          <div className="flex-1 bg-secondary/50 p-10 rounded-[2rem] border border-primary/10 relative">
+          <div className="flex-1 bg-gradient-to-br from-accent/10 to-primary/5 p-10 rounded-2xl border border-accent/20">
             <div className="flex items-center gap-4 mb-6">
-              <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center">
-                <ShieldCheck className="text-white w-6 h-6" />
+              <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
+                <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10.894 2.553a.5.5 0 00-.788 0l-.83 1.559-1.721.074c-.325.014-.616.23-.68.553-.063.323.125.64.425.823l1.243.937-.474 1.693c-.1.357.19.671.55.671.288 0 .556-.139.71-.37l1.239-1.854 1.24 1.854c.154.23.422.37.71.37.36 0 .65-.314.55-.67l-.474-1.693 1.243-.937c.3-.183.488-.5.425-.823-.063-.323-.355-.54-.68-.553l-1.72-.074-.83-1.559z" />
+                </svg>
               </div>
-              <h3 className="text-2xl font-bold">100% Independent. Always.</h3>
+              <h3 className="text-2xl font-bold text-primary">100% Independent</h3>
             </div>
-            <p className="text-lg text-foreground/70 leading-relaxed">
-              We never monetize through brand deals, affiliate links, or ads — so you can trust our recommendations are always aligned with our users.
+            <p className="text-gray-700">
+              We never take brand deals or affiliate payments, so you can trust our recommendations are always aligned with your health.
             </p>
           </div>
         </motion.div>
       </section>
 
       {/* FAQ Section */}
-      <section className="section-padding container mx-auto px-4 md:px-6 max-w-4xl">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
+      <section className="py-16 md:py-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">
             Frequently Asked Questions
           </h2>
-          <p className="text-lg text-foreground/60">
-            Answers to common questions from parents like you.
+          <p className="text-lg text-gray-700">
+            Answers to questions from parents like you
           </p>
-        </div>
+        </motion.div>
 
-        <Collapse 
-          ghost 
-          expandIcon={({ isActive }) => <Plus className={`w-6 h-6 transition-transform ${isActive ? 'rotate-45' : ''}`} />}
-          expandIconPosition="end"
-          items={faqs}
-          className="faq-collapse"
-        />
+        <div className="space-y-4">
+          {faqs.map((faq, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="bg-white border border-gray-200 rounded-lg"
+            >
+              <button
+                onClick={() => setExpandedIndex(expandedIndex === i ? null : i)}
+                className="w-full px-6 py-5 flex items-center justify-between hover:bg-gray-50 transition-colors text-left"
+              >
+                <h3 className="font-semibold text-primary text-lg">{faq.question}</h3>
+                <Plus
+                  className={`w-6 h-6 text-gray-400 transition-transform ${
+                    expandedIndex === i ? "rotate-45" : ""
+                  }`}
+                />
+              </button>
+              {expandedIndex === i && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  className="px-6 pb-5 border-t border-gray-200"
+                >
+                  <p className="text-gray-700">{faq.answer}</p>
+                </motion.div>
+              )}
+            </motion.div>
+          ))}
+        </div>
       </section>
     </div>
   );
